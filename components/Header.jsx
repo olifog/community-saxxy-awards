@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 export default function Header() {
   return (
-    <header className="relative bg-darkred">
-      <div className="flex max-w-screen-md mx-auto justify-between items-center py-2 px-4">
+    <header className="flex fixed justify-center w-screen bg-darkred z-50">
+      <div className="flex max-w-screen-md w-full justify-between items-center py-2 px-4">
         <div className="flex justify-start items-center space-x-16">
           <div className="">
             <Link href="/">
@@ -34,7 +34,7 @@ export default function Header() {
               </a>
             </Link>
             <Link href="/vote">
-            <a className="text-lg font-medium text-gray-600 disabled">
+            <a className="text-lg font-medium text-gray-600 pointer-events-none">
               Vote
             </a>
             </Link>
