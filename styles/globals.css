@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .disabled {
-    pointer-events: none;
-  }
+html::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
