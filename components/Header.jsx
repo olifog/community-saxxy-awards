@@ -41,7 +41,9 @@ export default function Header() {
             />
           </nav>
         </div>
-        <div className="justify-self-end rounded-full bg-white h-12 w-12"></div>
+        <Link href="/api/login">
+          <a className="justify-self-end rounded-full bg-white h-12 w-12"></a>
+        </Link>
       </div>
     </header>
   )
