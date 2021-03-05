@@ -3,10 +3,8 @@ import auth from '../../middleware/auth'
 
 const handler = nextConnect()
 
-handler
-  .use(auth)
-  .get((req, res) => {
-    res.json({ user: req.user })
-  })
+handler.use(auth).get((req, res) => {
+  res.json({ user: req.user })
+})
 
 export default handler
