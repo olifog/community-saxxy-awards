@@ -6,9 +6,7 @@ const handler = nextConnect()
 handler
   .use(auth)
   .get((req, res) => {
-    console.log(req)
-    //console.log(res)
-    res.json({req: req})
+    res.json({ user: req.user })
   })
 
 export default handler

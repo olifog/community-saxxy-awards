@@ -1,12 +1,11 @@
 import nextConnect from 'next-connect'
 import auth from '../../middleware/auth'
+import passport from '../../lib/passport'
 
 const handler = nextConnect()
 
-handler
-  .use(auth)
-  .get((req, res) => {
-    res.json({ user: req.user })
-  })
+handler.use(auth).get(passport.authenticate('steam', { failureRedirect: '/login' }), (req, res) => {
+  res.json({ user: req.user })
+})
 
 export default handler
