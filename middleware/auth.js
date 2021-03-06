@@ -8,12 +8,12 @@ const auth = nextConnect()
       name: 'sess',
       secret: process.env.COOKIES_SECRET,
       cookie: {
-        maxAge: 60 * 60 * 8, // 8 hours,
+        maxAge: 60 * 60 * 8,
         httpOnly: true,
         secure: process.env.VERCEL_ENV === 'production',
         path: '/',
-        sameSite: 'lax',
-      },
+        sameSite: 'lax'
+      }
     })
   )
   .use(passport.initialize())
