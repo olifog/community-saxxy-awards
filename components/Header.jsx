@@ -1,18 +1,18 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from 'next/link'
+import Image from 'next/image'
 
-import NavLink from './NavLink';
-import NavDropdown from './NavDropdown';
-import NavProfile from './NavProfile';
+import NavLink from './NavLink'
+import NavDropdown from './NavDropdown'
+import NavProfile from './NavProfile'
 
-import { useUser } from '../hooks/useUser';
+import { useUser } from '../hooks/useUser'
 
-export default function Header() {
-  const [user, { mutate }] = useUser();
+export default function Header () {
+  const [user, { mutate }] = useUser()
 
-  async function handleLogout() {
-    await fetch('/api/logout');
-    mutate({ user: null });
+  async function handleLogout () {
+    await fetch('/api/logout')
+    mutate({ user: null })
   }
 
   return (
@@ -22,7 +22,7 @@ export default function Header() {
           <div className="">
             <Link href="/">
               <a>
-                <Image 
+                <Image
                   src="/icon.png"
                   alt="Community Saxxy Awards icon"
                   height={50}
@@ -36,11 +36,11 @@ export default function Header() {
             <NavDropdown />
           </div>
           <nav className="hidden sm:flex space-x-10">
-            <NavLink 
+            <NavLink
               link="/rules"
               text="Rules"
             />
-            <NavLink 
+            <NavLink
               link="/enter"
               text="Enter"
             />
@@ -51,25 +51,28 @@ export default function Header() {
             />
           </nav>
         </div>
-        {user ? (
-          <NavProfile 
-            user={user}
-            handleLogout={handleLogout}
-          />
-        ) : (
-          <Link href="/api/login">
-            <a className="flex">
-              <div className="h-14 w-20 relative">
-                <Image
-                  src="/steam.png"
-                  alt="Steam login button"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </a>
-          </Link>
-        )}
+        {user
+          ? (
+              <NavProfile
+                user={user}
+                handleLogout={handleLogout}
+              />
+            )
+          : (
+              <Link href="/api/login">
+                <a className="flex">
+                  <div className="h-14 w-20 relative">
+                    <Image
+                      src="/steam.png"
+                      alt="Steam login button"
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  </div>
+                </a>
+              </Link>
+            )
+        }
       </div>
     </header>
   )

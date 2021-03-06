@@ -1,7 +1,7 @@
-import { Menu } from "@headlessui/react";
-import Link from 'next/link';
+import { Menu } from '@headlessui/react'
+import Link from 'next/link'
 
-export default function NavDropdown() {
+export default function NavDropdown () {
   return (
     <div className="flex flex-col relative items-start">
       <Menu>
@@ -16,8 +16,8 @@ export default function NavDropdown() {
               <Link href="/rules">
                 <a className={`${
                   active
-                    ? "bg-gray-100 text-gray-900"
-                    : "text-gray-700"
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700'
                 } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}>
                   Rules
                 </a>
@@ -29,8 +29,8 @@ export default function NavDropdown() {
               <Link href="/enter">
                 <a className={`${
                   active
-                    ? "bg-gray-100 text-gray-900"
-                    : "text-gray-700"
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700'
                 } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}>
                   Enter
                 </a>
@@ -47,5 +47,5 @@ export default function NavDropdown() {
         </Menu.Items>
       </Menu>
     </div>
-  );
+  )
 }

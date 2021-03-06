@@ -1,8 +1,9 @@
-import '../styles/globals.css';
-import Head from 'next/head';
-import Header from '../components/Header';
+import '../styles/globals.css'
+import Head from 'next/head'
+import Header from '../components/Header'
+import PropTypes from 'prop-types'
 
-export default function App({ Component, pageProps }) {
+export default function App ({ Component, pageProps }) {
   return (
     <div className="h-full min-h-screen antialiased bg-process bg-cover bg-center bg-fixed">
       <Head>
@@ -15,4 +16,9 @@ export default function App({ Component, pageProps }) {
       </main>
     </div>
   )
+}
+
+App.propTypes = {
+  Component: PropTypes.elementType,
+  pageProps: PropTypes.object
 }

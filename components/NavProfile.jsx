@@ -1,7 +1,8 @@
-import { Menu } from "@headlessui/react";
-import Image from 'next/image';
+import { Menu } from '@headlessui/react'
+import Image from 'next/image'
+import PropTypes from 'prop-types'
 
-export default function NavProfile({user, handleLogout}) {
+export default function NavProfile ({ user, handleLogout }) {
   return (
     <div className="flex flex-col relative items-start">
       <Menu>
@@ -21,8 +22,8 @@ export default function NavProfile({user, handleLogout}) {
             {({ active }) => (
               <a onClick={handleLogout} className={`${
                 active
-                  ? "bg-gray-100 text-gray-900"
-                  : "text-gray-700"
+                  ? 'bg-gray-100 text-gray-900'
+                  : 'text-gray-700'
               } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}>
                 Logout
               </a>
@@ -31,5 +32,10 @@ export default function NavProfile({user, handleLogout}) {
         </Menu.Items>
       </Menu>
     </div>
-  );
+  )
+}
+
+NavProfile.propTypes = {
+  user: PropTypes.object,
+  handleLogout: PropTypes.func
 }

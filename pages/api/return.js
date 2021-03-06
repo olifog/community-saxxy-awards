@@ -5,8 +5,8 @@ import passport from '../../lib/passport'
 const handler = nextConnect()
 
 handler.use(auth).get(passport.authenticate('steam', { failureRedirect: '/login' }), async (req, res) => {
-  res.statusCode = 302;
-  res.setHeader("Location", "/");
+  res.statusCode = 302
+  res.setHeader('Location', '/')
   res.end()
 })
 
