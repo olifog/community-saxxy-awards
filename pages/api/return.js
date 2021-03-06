@@ -4,8 +4,8 @@ import passport from '../../lib/passport'
 
 const handler = nextConnect()
 
-handler.use(auth).get(passport.authenticate('steam', { failureRedirect: '/login' }), (req, res) => {
-  res.json({ user: req.user })
+handler.use(auth).get(passport.authenticate('steam', { failureRedirect: '/login' }), async (req, res) => {
+  res.redirect('/')
 })
 
 export default handler

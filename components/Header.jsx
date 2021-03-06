@@ -1,17 +1,27 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import NavLink from '../components/NavLink';
-import NavDropdown from '../components/NavDropdown';
+import NavLink from './NavLink';
+import NavDropdown from './NavDropdown';
+import NavProfile from './NavProfile';
+
+import { useUser } from '../hooks/useUser';
 
 export default function Header() {
+  const [user, { mutate }] = useUser();
+
+  async function handleLogout() {
+    await fetch('/api/logout');
+    mutate({ user: null });
+  }
+
   return (
     <header className="flex fixed justify-center w-screen bg-darkred z-50">
       <div className="flex max-w-screen-md w-full justify-between items-center py-2 px-4">
         <div className="flex justify-start items-center space-x-8">
           <div className="">
             <Link href="/">
-              <a className="h-6 sm:h-8 w-auto">
+              <a>
                 <Image 
                   src="/icon.png"
                   alt="Community Saxxy Awards icon"
@@ -41,9 +51,25 @@ export default function Header() {
             />
           </nav>
         </div>
-        <Link href="/api/login">
-          <a className="justify-self-end rounded-full bg-white h-12 w-12"></a>
-        </Link>
+        {user ? (
+          <NavProfile 
+            user={user}
+            handleLogout={handleLogout}
+          />
+        ) : (
+          <Link href="/api/login">
+            <a className="flex">
+              <div className="h-14 w-20 relative">
+                <Image
+                  src="/steam.png"
+                  alt="Steam login button"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+            </a>
+          </Link>
+        )}
       </div>
     </header>
   )
