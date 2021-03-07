@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { useUser } from '../../hooks/useUser'
+
 import NavLink from './NavLink'
 import NavDropdown from './NavDropdown'
 import NavProfile from './NavProfile'
 
-import { useUser } from '../hooks/useUser'
-
-export default function Header () {
+export default function Navbar () {
   const [user, { mutate }] = useUser()
 
   async function handleLogout () {
