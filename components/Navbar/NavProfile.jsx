@@ -11,7 +11,7 @@ export default function NavProfile ({ user, handleLogout }) {
         <Menu.Button>
           <div className="h-14 w-14 relative">
             <Image
-              src={user.photos[2].value}
+              src={user.imageUrl}
               alt="User"
               layout="fill"
               objectFit="contain"
@@ -23,13 +23,13 @@ export default function NavProfile ({ user, handleLogout }) {
           <div className="px-4 py-3">
             <p className="text-sm leading-5 text-gray-400">
               Signed in as
-              <span className="text-gray-600"> {user.displayName}</span>
+              <span className="text-gray-600"> {user.name}</span>
             </p>
           </div>
           <div>
             <NavMenuItem
               text="Profile"
-              link={`/profile/${user.id}`}
+              link={`/profile/${user.steamid}`}
             />
             <NavMenuItem
               text="My Submission"
