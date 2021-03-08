@@ -22,7 +22,10 @@ export default function App ({ Component, pageProps }) {
         />
       </div>
       <main>
-        <Component {...pageProps} />
+        <div className="flex flex-col items-center">
+          <div className="fixed h-screen w-full max-w-screen-md mx-auto bg-darkred-light z-1"></div>
+          <Component {...pageProps} />
+        </div>
       </main>
     </>
   )
