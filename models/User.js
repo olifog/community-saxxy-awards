@@ -12,6 +12,12 @@ const UserSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
     required: true
+  },
+  profileUrl: {
+    type: String
+  },
+  countryCode: {
+    type: String
   }
 })
 
