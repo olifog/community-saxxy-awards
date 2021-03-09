@@ -9,7 +9,7 @@ const auth = nextConnect()
       name: 'sess',
       secret: process.env.COOKIES_SECRET,
       cookie: {
-        maxAge: 60 * 60 * 8,
+        maxAge: 60 * 60 * 24 * 31,
         httpOnly: true,
         secure: process.env.VERCEL_ENV === 'production',
         path: '/',
