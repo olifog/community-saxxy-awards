@@ -1,6 +1,6 @@
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     extend: {
       colors: {
@@ -8,14 +8,17 @@ module.exports = {
           light: '#2b030f',
           DEFAULT: '#120106'
         }
-      },
-      backgroundImage: theme => ({
-        'process': "url('/process.jpg')",
-      })
+      }
     },
+    aspectRatio: {
+      '16/9': [16, 9]
+    }
   },
   variants: {
     extend: {},
+    aspectRatio: ['responsive']
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-aspect-ratio')
+  ]
 }

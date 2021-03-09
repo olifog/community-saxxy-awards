@@ -44,7 +44,7 @@ export default function Profile ({ user }) {
                 </div>
               </div>
               <div className="transform -translate-y-6 border-dotted border-4 border-gray-300 rounded-lg text-gray-400 text-sm z-10 w-5/6 p-3">
-                No Submission!
+                No Submissions!
               </div>
             </div>
           )

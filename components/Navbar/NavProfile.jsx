@@ -32,8 +32,8 @@ export default function NavProfile ({ user, handleLogout }) {
               link={`/profile/${user.steamid}`}
             />
             <NavMenuItem
-              text="My Submission"
-              link="/submission"
+              text="My Submissions"
+              link="/user/submissions"
             />
           </div>
           <div>
