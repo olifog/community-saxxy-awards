@@ -12,7 +12,7 @@ export default function Profile ({ user }) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center h-screen w-full max-w-screen-md">
+    <div className="flex flex-col items-center h-screen w-full max-w-screen-md overflow-hidden">
       {router.isFallback
         ? (
             <BounceLoader color="#ffffff" size={150} />
