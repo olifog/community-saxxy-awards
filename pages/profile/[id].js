@@ -3,11 +3,14 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import BounceLoader from 'react-spinners/BounceLoader'
 import Flag from 'react-flagkit'
+import { ObjectId } from 'bson'
 
 import dbConnect from '../../lib/dbConnect'
 import User from '../../models/User'
+import Submission from '../../models/Submission'
+import SubmissionCard from '../../components/SubmissionCard'
 
-export default function Profile ({ user }) {
+export default function Profile ({ user, submissions }) {
   // eslint-disable-next-line semi
   const router = useRouter();
 
@@ -43,9 +46,18 @@ export default function Profile ({ user }) {
                   </span>
                 </div>
               </div>
-              <div className="transform -translate-y-6 border-dotted border-4 border-gray-300 rounded-lg text-gray-400 text-sm z-10 w-5/6 p-3">
-                No Submissions!
-              </div>
+              {!submissions.length
+                ? (
+                  <div className="transform -translate-y-6 border-dotted border-4 border-gray-300 rounded-lg text-gray-400 text-sm z-10 w-5/6 p-3">
+                    No Submissions!
+                  </div>
+                  )
+                : (
+                    submissions.map((submission) => (
+                      <SubmissionCard key={submission.youtubeId} submission={submission} displayStatus={false} />
+                    ))
+                  )
+              }
             </div>
           )
       }
@@ -55,19 +67,23 @@ export default function Profile ({ user }) {
 
 export async function getStaticProps ({ params }) {
   await dbConnect()
-  return await User.findOne({ steamid: params.id }, { _id: 0 }).lean().then((user) => {
+  return await User.findOne({ steamid: params.id }).lean().then(async (user) => {
     if (!user) {
       return {
         notFound: true
       }
     }
 
-    return {
-      props: {
-        user: user
-      },
-      revalidate: 60
-    }
+    return await Submission.find({ ownerids: ObjectId(user._id) }, { _id: 0, ownerids: 0 }).lean().then((submissions) => {
+      delete user._id
+      return {
+        props: {
+          user: user,
+          submissions: submissions
+        },
+        revalidate: 60
+      }
+    })
   })
 }
 
@@ -83,5 +99,6 @@ export async function getStaticPaths () {
 }
 
 Profile.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  submissions: PropTypes.arrayOf(PropTypes.object)
 }
