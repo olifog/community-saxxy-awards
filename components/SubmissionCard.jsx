@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function SubmissionCard ({ submission, displayStatus }) {
+export default function SubmissionCard ({ submission, displayStatus, bgColour }) {
   return (
-    <div className="relative h-48 sm:h-36 flex flex-col items-center sm:flex-row space-y-1 sm:space-x-8 sm:space-y-0 rounded-xl shadow-xl w-3/4 bg-darkred sm:py-4">
+    <div className={`relative h-48 sm:h-36 flex flex-col items-center sm:flex-row space-y-1 sm:space-x-8 sm:space-y-0 rounded-xl shadow-xl w-3/4 sm:py-4 ${bgColour}`}>
       <div className="w-48 h-28 relative">
         <Link href={`/submission/${submission._id}`}>
           <a>
@@ -18,7 +18,7 @@ export default function SubmissionCard ({ submission, displayStatus }) {
           </a>
         </Link>
       </div>
-      <div className="flex flex-col sm:h-full sm:justify-between">
+      <div className={`flex flex-col sm:h-full ${displayStatus ? 'sm:justify-between' : 'sm:justify-center'}`}>
         <div>
           <Link href={`/submission/${submission._id}`}>
             <a className="text-white font-semibold text-md hover:text-gray-300">
@@ -60,5 +60,6 @@ export default function SubmissionCard ({ submission, displayStatus }) {
 
 SubmissionCard.propTypes = {
   submission: PropTypes.object,
-  displayStatus: PropTypes.bool
+  displayStatus: PropTypes.bool,
+  bgColour: PropTypes.string
 }

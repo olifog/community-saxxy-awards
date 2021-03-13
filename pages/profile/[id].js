@@ -54,7 +54,7 @@ export default function Profile ({ user, submissions }) {
                   )
                 : (
                     submissions.map((submission) => (
-                      <SubmissionCard key={submission.youtubeId} submission={submission} displayStatus={false} />
+                      <SubmissionCard key={submission.youtubeId} submission={submission} displayStatus={false} bgColour="bg-gray-800"/>
                     ))
                   )
               }

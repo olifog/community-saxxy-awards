@@ -15,7 +15,7 @@ export default function Submissions () {
   return (
     <div className="flex flex-col items-center pt-20 max-w-screen-md w-full z-20">
       {data.submissions.map((submission) => (
-        <SubmissionCard key={submission._id} submission={submission} displayStatus={true} />
+        <SubmissionCard key={submission._id} submission={submission} displayStatus={true} bgColour="bg-darkred"/>
       ))}
     </div>
   )
