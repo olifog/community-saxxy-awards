@@ -74,12 +74,15 @@ export async function getStaticProps ({ params }) {
       }
     }
 
-    return await Submission.find({ ownerids: ObjectId(user._id) }, { _id: 0, ownerids: 0 }).lean().then((submissions) => {
+    return await Submission.find({ ownerids: ObjectId(user._id) }, { ownerids: 0 }).lean().then((submissions) => {
       delete user._id
       return {
         props: {
           user: user,
-          submissions: submissions
+          submissions: submissions.map((submission) => {
+            submission._id = submission._id.toString()
+            return submission
+          })
         },
         revalidate: 60
       }
