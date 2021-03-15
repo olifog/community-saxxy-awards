@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Home () {
   return (
-    <div className="flex flex-col max-w-screen-md px-8 pt-20 pb-8 items-start">
+    <div className="flex flex-col max-w-screen-md px-8 pt-20 items-start">
       <div className="self-center pointer-events-none">
         <Image
           src="/main.png"

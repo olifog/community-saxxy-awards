@@ -13,7 +13,7 @@ export default function SubmissionPage ({ submission }) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center h-screen w-full max-w-screen-md z-20">
+    <div className="flex flex-col items-center w-full max-w-screen-md z-20">
       {router.isFallback
         ? (
             <BounceLoader color="#ffffff" size={150} />
