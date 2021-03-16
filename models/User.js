@@ -14,10 +14,12 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   profileUrl: {
-    type: String
+    type: String,
+    required: true
   },
   countryCode: {
-    type: String
+    type: String,
+    required: true
   }
 })
 
