@@ -32,9 +32,9 @@ export default function SubmissionPage ({ submission }) {
                   description: `${submission.name} - in the ${submission.category} Category of the first annual Community Saxxy Awards!`,
                   images: [
                     {
-                      url: 'https://saxxys.com/public/embedimage.png',
-                      width: 1200,
-                      height: 628,
+                      url: `https://i.ytimg.com/vi/${submission.youtubeId}/mqdefault.jpg`,
+                      width: 320,
+                      height: 180,
                       alt: `${submission.name} - Community Saxxy Awards`
                     }
                   ]

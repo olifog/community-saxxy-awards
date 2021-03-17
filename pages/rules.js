@@ -13,7 +13,7 @@ export default function Rules () {
           description: 'Rules for the first annual Community Saxxy Awards. This short film competition is run by the TF2 community, for the TF2 community- enter today!',
           images: [
             {
-              url: 'https://saxxys.com/public/embedimage.png',
+              url: 'https://saxxys.com/embedimage.png',
               width: 1200,
               height: 628,
               alt: 'Community Saxxy Awards'

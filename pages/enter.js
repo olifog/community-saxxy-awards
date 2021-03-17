@@ -13,7 +13,7 @@ export default function Enter () {
           description: 'Enter the first annual Community Saxxy Awards here- a short film contest by the TF2 community, for the TF2 community.',
           images: [
             {
-              url: 'https://saxxys.com/public/embedimage.png',
+              url: 'https://saxxys.com/embedimage.png',
               width: 1200,
               height: 628,
               alt: 'Community Saxxy Awards'
