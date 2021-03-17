@@ -7,6 +7,7 @@ import Link from 'next/link'
 import dbConnect from '../../lib/dbConnect'
 import Submission from '../../models/Submission'
 import User from '../../models/User'
+import SubmissionVote from '../../components/SubmissionVote'
 
 export default function SubmissionPage ({ submission }) {
   // eslint-disable-next-line semi
@@ -59,18 +60,7 @@ export default function SubmissionPage ({ submission }) {
                   </div>
                 </div>
                 <div className="flex-1 flex flex-col sm:flex-row justify-center items-center space-x-2">
-                  <div className="flex flex-row sm:flex-col space-x-0.5 space-y-0 sm:space-y-0.5 sm:space-x-0">
-                    <button className="border-2 border-gray-100 rounded-l-xl rounded-t-none sm:rounded-t-xl sm:rounded-l-none">
-                      <svg width="30" height="30">
-                        <path d="M7 22 L15 8 L23 22" fill="none" strokeWidth="4" strokeLinecap="round" stroke="white" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
-                    <button className="border-2 border-gray-100 rounded-r-xl rounded-b-none sm:rounded-b-xl sm:rounded-r-none">
-                      <svg width="30" height="30">
-                        <path d="M7 8 L15 22 L23 8" fill="none" strokeWidth="4" strokeLinecap="round" stroke="white" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
-                  </div>
+                  <SubmissionVote submission={submission} />
                   <div className="flex space-x-1">
                     <div className="text-gray-200">
                       {submission.category}
@@ -92,12 +82,14 @@ export async function getStaticProps ({ params }) {
   await dbConnect()
 
   try {
-    return await Submission.findById(params.id, { _id: 0 }).lean().then(async (submission) => {
+    return await Submission.findById(params.id).lean().then(async (submission) => {
       if (!submission) {
         return {
           notFound: true
         }
       }
+
+      submission._id = submission._id.toString()
 
       const promises = submission.ownerids.map(async (ownerid) => {
         return User.findById(ownerid, { _id: 0 }).lean()
