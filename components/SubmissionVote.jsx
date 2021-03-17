@@ -7,7 +7,22 @@ export default function SubmissionVote ({ submission }) {
   const { data, mutate } = useSWR(`/api/vote/${submission._id}`, fetcher)
 
   async function handleClick (value) {
-    mutate(value)
+    if (data.vote === value) value = 0
+    mutate({ vote: value }, false)
+
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify({ value: value }),
+      headers: {
+        // eslint-disable-next-line quote-props
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    }
+
+    await fetch(`/api/vote/${submission._id}`, options)
+
+    mutate()
   }
 
   if (!data) return (<div>...</div>)
