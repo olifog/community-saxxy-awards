@@ -16,31 +16,31 @@ export default function Profile ({ user, submissions }) {
   const router = useRouter();
 
   return (
-    <>
-      <NextSeo
-        title={user.name}
-        description={`${user.name}'s profile, ${submissions.length} submission${submissions.length === 1 ? '' : 's'} - Welcome to the first annual Community Saxxy Awards! This short film competition is by the TF2 community, for the TF2 community.`}
-        openGraph={{
-          type: 'website',
-          url: `https://saxxys.com/profile/${user.steamid}`,
-          title: `${user.name} | Community Saxxy Awards`,
-          description: `${user.name}'s profile, ${submissions.length} submission${submissions.length === 1 ? '' : 's'} - Welcome to the first annual Community Saxxy Awards! This short film competition is by the TF2 community, for the TF2 community.`,
-          images: [
-            {
-              url: 'https://saxxys.com/public/embedimage.png',
-              width: 1200,
-              height: 628,
-              alt: `${user.name}'s profile- Community Saxxy Awards`
-            }
-          ]
-        }}
-      />
-      <div className="flex flex-col items-center h-screen w-full max-w-screen-md overflow-hidden">
-        {router.isFallback
-          ? (
-              <BounceLoader color="#ffffff" size={150} />
-            )
-          : (
+    <div className="flex flex-col items-center h-screen w-full max-w-screen-md overflow-hidden">
+      {router.isFallback
+        ? (
+            <BounceLoader color="#ffffff" size={150} />
+          )
+        : (
+            <>
+              <NextSeo
+                title={user.name}
+                description={`${user.name}'s profile, ${submissions.length} submission${submissions.length === 1 ? '' : 's'} - Welcome to the first annual Community Saxxy Awards! This short film competition is by the TF2 community, for the TF2 community.`}
+                openGraph={{
+                  type: 'website',
+                  url: `https://saxxys.com/profile/${user.steamid}`,
+                  title: `${user.name} | Community Saxxy Awards`,
+                  description: `${user.name}'s profile, ${submissions.length} submission${submissions.length === 1 ? '' : 's'} - Welcome to the first annual Community Saxxy Awards! This short film competition is by the TF2 community, for the TF2 community.`,
+                  images: [
+                    {
+                      url: 'https://saxxys.com/public/embedimage.png',
+                      width: 1200,
+                      height: 628,
+                      alt: `${user.name}'s profile- Community Saxxy Awards`
+                    }
+                  ]
+                }}
+              />
               <div className="flex flex-col items-center transform translate-y-1/4 h-full w-full">
                 <div className="absolute transform skew-y-6 bg-gray-100 h-full w-full z-2"></div>
                 <div className="flex flex-col items-center transform -translate-y-24 space-y-1">
@@ -79,10 +79,10 @@ export default function Profile ({ user, submissions }) {
                     )
                 }
               </div>
-            )
-        }
-      </div>
-    </>
+            </>
+          )
+      }
+    </div>
   )
 }
 

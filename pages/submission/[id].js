@@ -15,31 +15,31 @@ export default function SubmissionPage ({ submission }) {
   const router = useRouter();
 
   return (
-    <>
-      <NextSeo
-        title={submission.name}
-        description={`${submission.name} - in the ${submission.category} Category of the first annual Community Saxxy Awards!`}
-        openGraph={{
-          type: 'website',
-          url: `https://saxxys.com/submission/${submission._id}`,
-          title: `${submission.name} - Community Saxxy Awards`,
-          description: `${submission.name} - in the ${submission.category} Category of the first annual Community Saxxy Awards!`,
-          images: [
-            {
-              url: 'https://saxxys.com/public/embedimage.png',
-              width: 1200,
-              height: 628,
-              alt: `${submission.name} - Community Saxxy Awards`
-            }
-          ]
-        }}
-      />
-      <div className="flex flex-col items-center w-full max-w-screen-md z-20">
-        {router.isFallback
-          ? (
-              <BounceLoader color="#ffffff" size={150} />
-            )
-          : (
+    <div className="flex flex-col items-center w-full max-w-screen-md z-20">
+      {router.isFallback
+        ? (
+            <BounceLoader color="#ffffff" size={150} />
+          )
+        : (
+            <>
+              <NextSeo
+                title={submission.name}
+                description={`${submission.name} - in the ${submission.category} Category of the first annual Community Saxxy Awards!`}
+                openGraph={{
+                  type: 'website',
+                  url: `https://saxxys.com/submission/${submission._id}`,
+                  title: `${submission.name} - Community Saxxy Awards`,
+                  description: `${submission.name} - in the ${submission.category} Category of the first annual Community Saxxy Awards!`,
+                  images: [
+                    {
+                      url: 'https://saxxys.com/public/embedimage.png',
+                      width: 1200,
+                      height: 628,
+                      alt: `${submission.name} - Community Saxxy Awards`
+                    }
+                  ]
+                }}
+              />
               <div className="flex flex-col items-center mt-28 w-5/6 pb-4 bg-gray-800 rounded-lg">
                 <div className="relative w-full overflow-hidden aspect-ratio-16/9 shadow-2xl">
                   <iframe
@@ -92,10 +92,10 @@ export default function SubmissionPage ({ submission }) {
                   </div>
                 </div>
               </div>
-            )
-        }
-      </div>
-    </>
+            </>
+          )
+      }
+    </div>
   )
 }
 
