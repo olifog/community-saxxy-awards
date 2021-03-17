@@ -33,7 +33,7 @@ export default function Profile ({ user, submissions }) {
                   description: `${user.name}'s profile, ${submissions.length} submission${submissions.length === 1 ? '' : 's'} - Welcome to the first annual Community Saxxy Awards! This short film competition is by the TF2 community, for the TF2 community.`,
                   images: [
                     {
-                      url: 'https://saxxys.com/public/embedimage.png',
+                      url: 'https://saxxys.com/embedimage.png',
                       width: 1200,
                       height: 628,
                       alt: `${user.name}'s profile- Community Saxxy Awards`

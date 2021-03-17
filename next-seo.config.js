@@ -8,7 +8,7 @@ export default {
     title: 'Community Saxxy Awards',
     images: [
       {
-        url: 'https://saxxys.com/public/embedimage.png',
+        url: 'https://saxxys.com/embedimage.png',
         width: 1200,
         height: 628,
         alt: 'Community Saxxy Awards'
