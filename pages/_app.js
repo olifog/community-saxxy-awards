@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import CookieConsent from 'react-cookie-consent'
 import Router from 'next/router'
 import Link from 'next/link'
+import { DefaultSeo } from 'next-seo'
+import SEO from '../next-seo.config'
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -18,9 +20,9 @@ export default function App ({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Community Saxxy Awards</title>
         <link rel="icon" type="image/png" href="/favicon.ico" />
       </Head>
+      <DefaultSeo {...SEO} />
       <Navbar />
       <div className="fixed h-screen w-screen overflow-hidden z-0">
         <Image

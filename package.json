@@ -15,6 +15,7 @@
     "mongoose": "^5.11.19",
     "next": "10.0.5",
     "next-connect": "^0.10.0",
+    "next-seo": "^4.20.0",
     "nprogress": "github:Mikrz/nprogress#patch-1",
     "passport": "^0.4.1",
     "passport-steam": "^1.0.15",

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import BounceLoader from 'react-spinners/BounceLoader'
 import Image from 'next/image'
 import Link from 'next/link'
+import { NextSeo } from 'next-seo'
 
 import dbConnect from '../../lib/dbConnect'
 import Submission from '../../models/Submission'
@@ -20,58 +21,78 @@ export default function SubmissionPage ({ submission }) {
             <BounceLoader color="#ffffff" size={150} />
           )
         : (
-            <div className="flex flex-col items-center mt-28 w-5/6 pb-4 bg-gray-800 rounded-lg">
-              <div className="relative w-full overflow-hidden aspect-ratio-16/9 shadow-2xl">
-                <iframe
-                  className="absolute h-full w-full left-0 top-0"
-                  width="480"
-                  height="270"
-                  src={`https://www.youtube.com/embed/${submission.youtubeId}`}>
-                </iframe>
-              </div>
-              <div className="text-white text-lg font-semibold pt-2 pb-4">
-                {submission.name}
-              </div>
-              <div className="flex w-full divide-x divide-white">
-                <div className="flex-1 space-y-2 text-center sm:text-left">
-                  <span className="text-gray-300 px-8">
-                    Creators
-                  </span>
-                  <div className="flex justify-center">
-                    <div className="relative grid grid-cols-3 sm:grid-cols-6 gap-x-1">
-                      {submission.owners.map((owner) => {
-                        return (
-                          <div key={owner.steamid} className="h-10 w-10 relative hover:opacity-80">
-                            <Link href={`/profile/${owner.steamid}`}>
-                              <a>
-                                <Image
-                                  src={owner.imageUrl}
-                                  alt="User"
-                                  layout="fill"
-                                  objectFit="contain"
-                                  className="rounded-full"
-                                />
-                              </a>
-                            </Link>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
+            <>
+              <NextSeo
+                title={submission.name}
+                description={`${submission.name} - in the ${submission.category} Category of the first annual Community Saxxy Awards!`}
+                openGraph={{
+                  type: 'website',
+                  url: `https://saxxys.com/submission/${submission._id}`,
+                  title: `${submission.name} - Community Saxxy Awards`,
+                  description: `${submission.name} - in the ${submission.category} Category of the first annual Community Saxxy Awards!`,
+                  images: [
+                    {
+                      url: 'https://saxxys.com/public/embedimage.png',
+                      width: 1200,
+                      height: 628,
+                      alt: `${submission.name} - Community Saxxy Awards`
+                    }
+                  ]
+                }}
+              />
+              <div className="flex flex-col items-center mt-28 w-5/6 pb-4 bg-gray-800 rounded-lg">
+                <div className="relative w-full overflow-hidden aspect-ratio-16/9 shadow-2xl">
+                  <iframe
+                    className="absolute h-full w-full left-0 top-0"
+                    width="480"
+                    height="270"
+                    src={`https://www.youtube.com/embed/${submission.youtubeId}`}>
+                  </iframe>
                 </div>
-                <div className="flex-1 flex flex-col sm:flex-row justify-center items-center space-x-2">
-                  <SubmissionVote submission={submission} />
-                  <div className="flex space-x-1">
-                    <div className="text-gray-200">
-                      {submission.category}
-                    </div>
-                    <span className="text-gray-400">
-                      category
+                <div className="text-white text-lg font-semibold pt-2 pb-4">
+                  {submission.name}
+                </div>
+                <div className="flex w-full divide-x divide-white">
+                  <div className="flex-1 space-y-2 text-center sm:text-left">
+                    <span className="text-gray-300 px-8">
+                      Creators
                     </span>
+                    <div className="flex justify-center">
+                      <div className="relative grid grid-cols-3 sm:grid-cols-6 gap-x-1">
+                        {submission.owners.map((owner) => {
+                          return (
+                            <div key={owner.steamid} className="h-10 w-10 relative hover:opacity-80">
+                              <Link href={`/profile/${owner.steamid}`}>
+                                <a>
+                                  <Image
+                                    src={owner.imageUrl}
+                                    alt="User"
+                                    layout="fill"
+                                    objectFit="contain"
+                                    className="rounded-full"
+                                  />
+                                </a>
+                              </Link>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 flex flex-col sm:flex-row justify-center items-center space-x-2">
+                    <SubmissionVote submission={submission} />
+                    <div className="flex space-x-1">
+                      <div className="text-gray-200">
+                        {submission.category}
+                      </div>
+                      <span className="text-gray-400">
+                        category
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </>
           )
       }
     </div>
