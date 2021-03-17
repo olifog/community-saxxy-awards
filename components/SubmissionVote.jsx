@@ -10,6 +10,8 @@ export default function SubmissionVote ({ submission }) {
     mutate(value)
   }
 
+  if (!data) return (<div>...</div>)
+
   return (
     <div className="flex flex-row sm:flex-col space-x-0.5 space-y-0 sm:space-y-0.5 sm:space-x-0">
       <button onClick={(e) => handleClick(1, e)} className={`border-2 border-gray-100 rounded-l-xl rounded-t-none sm:rounded-t-xl sm:rounded-l-none ${data.vote > 0 ? 'bg-green-800' : ''}`}>
