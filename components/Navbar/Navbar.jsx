@@ -11,7 +11,7 @@ export default function Navbar () {
   const [user, { mutate }] = useUser()
 
   async function handleLogout () {
-    await fetch('/api/logout')
+    await fetch('/api/auth/steam/logout')
     mutate({ user: null })
   }
 
@@ -59,7 +59,7 @@ export default function Navbar () {
               />
             )
           : (
-              <Link href="/api/login">
+              <Link href="/api/auth/steam/login">
                 <a className="flex">
                   <div className="h-14 w-20 relative">
                     <Image
