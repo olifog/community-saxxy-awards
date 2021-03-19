@@ -1,8 +1,9 @@
 import nextConnect from 'next-connect'
+import { ObjectId } from 'bson'
+
 import auth from '../../../middleware/auth'
 import Submission from '../../../models/Submission'
 import dbConnect from '../../../lib/dbConnect'
-import { ObjectId } from 'bson'
 
 const handler = nextConnect()
 

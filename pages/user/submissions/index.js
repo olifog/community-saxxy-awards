@@ -4,10 +4,11 @@ import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 
 import SubmissionCard from '../../../components/SubmissionCard'
+import withPrivateRoute from '../../../components/withPrivateRoute'
 
 export const fetcher = (url) => fetch(url).then((r) => r.json())
 
-export default function Submissions () {
+const Submissions = () => {
   const { data } = useSWR('/api/user/submissions', fetcher)
 
   if (!data) {
@@ -33,3 +34,5 @@ export default function Submissions () {
     </>
   )
 }
+
+export default withPrivateRoute(Submissions)
