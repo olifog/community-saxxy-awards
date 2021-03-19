@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { useUser } from '../../hooks/useUser'
-
 import NavLink from './NavLink'
 import NavDropdown from './NavDropdown'
 import NavProfile from './NavProfile'

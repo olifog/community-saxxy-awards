@@ -1,12 +1,13 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 import Image from 'next/image'
-import Navbar from '../components/Navbar/Navbar'
 import PropTypes from 'prop-types'
 import CookieConsent from 'react-cookie-consent'
 import Router from 'next/router'
 import Link from 'next/link'
 import { DefaultSeo } from 'next-seo'
+
+import Navbar from '../components/Navbar/Navbar'
 import SEO from '../next-seo.config'
 import SaxxyFooter from '../components/SaxxyFooter'
 

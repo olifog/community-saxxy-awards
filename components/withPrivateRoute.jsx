@@ -1,5 +1,6 @@
-import { useUser } from '../hooks/useUser'
 import { useRouter } from 'next/router'
+
+import { useUser } from '../hooks/useUser'
 
 const withPrivateRoute = (PassedComponent) => {
   const WrappedComponent = (props) => {
