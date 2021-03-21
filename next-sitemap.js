@@ -1,10 +1,8 @@
-const dev = (process.env.NODE_ENV || 'development') === 'development'
-const prod = process.env.VERCEL_ENV === 'production'
-const host = dev
-  ? 'http://localhost:3000'
-  : prod
-    ? 'https://saxxys.com'
-    : `https://${process.env.VERCEL_URL}`
+const host = process.env.VERCEL_ENV === 'production'
+  ? 'https://saxxys.com'
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'https://localhost:3000'
 
 module.exports = {
   siteUrl: host,
