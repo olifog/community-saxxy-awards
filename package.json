@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "next": "10.0.5",
     "next-connect": "^0.10.0",
     "next-seo": "^4.20.0",
+    "next-sitemap": "^1.6.3",
     "nprogress": "github:Mikrz/nprogress#patch-1",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",

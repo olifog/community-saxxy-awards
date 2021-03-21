@@ -19,7 +19,7 @@ const Submissions = () => {
     <>
       <NextSeo
         title="Submissions"
-        description="User submissions for the first annual Community Saxxy Awards! We're a short film competition, for the TF2 community, by the TF2 community."
+        noindex={true}
       />
       <div className="flex flex-col items-center pt-20 max-w-screen-md w-full z-20 space-y-4">
         {data.submissions.map((submission) => (
