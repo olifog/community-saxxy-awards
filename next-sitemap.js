@@ -7,7 +7,11 @@ const host = process.env.VERCEL_ENV === 'production'
 module.exports = {
   siteUrl: host,
   generateRobotsTxt: true,
-  exclude: ['/server-sitemap.xml'],
+  exclude: [
+    '/server-sitemap.xml',
+    '/user/submissions',
+    '/user/submissions/new'
+  ],
   robotsTxtOptions: {
     additionalSitemaps: [
       `${host}/server-sitemap.xml`
