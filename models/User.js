@@ -20,6 +20,18 @@ const UserSchema = new mongoose.Schema({
   countryCode: {
     type: String,
     required: true
+  },
+  googleid: {
+    type: String,
+    required: false
+  },
+  accessToken: {
+    type: String,
+    required: false
+  },
+  refreshToken: {
+    type: String,
+    required: false
   }
 })
 
