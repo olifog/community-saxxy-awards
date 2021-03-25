@@ -27,7 +27,7 @@ export async function getServerSideProps (ctx) {
 
   const userPages = users.users.map((user) => (
     {
-      loc: `${host}/user/${user}`,
+      loc: `${host}/profile/${user}`,
       lastmod: new Date().toISOString()
     }
   ))
